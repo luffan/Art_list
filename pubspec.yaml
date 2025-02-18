@@ -1,0 +1,59 @@
+name: art_list
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # Remote deps
+  dio: ^5.8.0+1
+  retrofit: ^4.4.2
+  logger: ^2.4.0
+  json_annotation: ^4.9.0
+
+  # Local deps
+  hive: ^4.0.0-dev.2
+  isar_flutter_libs: ^4.0.0-dev.13
+  path_provider: ^2.1.0
+
+  # Network info
+  internet_connection_checker: ^3.0.1
+
+  # Entity creating
+  freezed: ^2.5.7
+  freezed_annotation: ^2.4.4
+
+  # Error handling
+  dartz: ^0.10.1
+
+  # State managment
+  flutter_bloc: ^9.0.0
+
+  # DI
+  cherrypick: ^2.0.0
+
+  #Navigation
+  auto_route: ^9.3.0+1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+  retrofit_generator: '>=9.0.0 <10.0.0'
+  build_runner: ^2.3.3
+  json_serializable: ^6.9.0
+
+flutter:
+
+  uses-material-design: true
