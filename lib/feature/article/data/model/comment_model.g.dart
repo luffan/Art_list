@@ -9,21 +9,25 @@ part of 'comment_model.dart';
 _$CommentModelImpl _$$CommentModelImplFromJson(Map<String, dynamic> json) =>
     _$CommentModelImpl(
       id: (json['id'] as num).toInt(),
-      title: json['title'] as String,
+      postId: (json['postId'] as num).toInt(),
+      name: json['name'] as String,
+      email: json['email'] as String,
       body: json['body'] as String,
     );
 
 Map<String, dynamic> _$$CommentModelImplToJson(_$CommentModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'title': instance.title,
+      'postId': instance.postId,
+      'name': instance.name,
+      'email': instance.email,
       'body': instance.body,
     };
 
 _$ListCommentModelImpl _$$ListCommentModelImplFromJson(
         Map<String, dynamic> json) =>
     _$ListCommentModelImpl(
-      posts: (json['posts'] as List<dynamic>)
+      comments: (json['comments'] as List<dynamic>)
           .map((e) => CommentModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -31,5 +35,5 @@ _$ListCommentModelImpl _$$ListCommentModelImplFromJson(
 Map<String, dynamic> _$$ListCommentModelImplToJson(
         _$ListCommentModelImpl instance) =>
     <String, dynamic>{
-      'posts': instance.posts,
+      'comments': instance.comments,
     };

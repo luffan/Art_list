@@ -21,7 +21,9 @@ CommentModel _$CommentModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CommentModel {
   int get id => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
+  int get postId => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
 
   /// Serializes this CommentModel to a JSON map.
@@ -40,7 +42,7 @@ abstract class $CommentModelCopyWith<$Res> {
           CommentModel value, $Res Function(CommentModel) then) =
       _$CommentModelCopyWithImpl<$Res, CommentModel>;
   @useResult
-  $Res call({int id, String title, String body});
+  $Res call({int id, int postId, String name, String email, String body});
 }
 
 /// @nodoc
@@ -59,7 +61,9 @@ class _$CommentModelCopyWithImpl<$Res, $Val extends CommentModel>
   @override
   $Res call({
     Object? id = null,
-    Object? title = null,
+    Object? postId = null,
+    Object? name = null,
+    Object? email = null,
     Object? body = null,
   }) {
     return _then(_value.copyWith(
@@ -67,9 +71,17 @@ class _$CommentModelCopyWithImpl<$Res, $Val extends CommentModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      postId: null == postId
+          ? _value.postId
+          : postId // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       body: null == body
           ? _value.body
@@ -87,7 +99,7 @@ abstract class _$$CommentModelImplCopyWith<$Res>
       __$$CommentModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String title, String body});
+  $Res call({int id, int postId, String name, String email, String body});
 }
 
 /// @nodoc
@@ -104,7 +116,9 @@ class __$$CommentModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? title = null,
+    Object? postId = null,
+    Object? name = null,
+    Object? email = null,
     Object? body = null,
   }) {
     return _then(_$CommentModelImpl(
@@ -112,9 +126,17 @@ class __$$CommentModelImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      postId: null == postId
+          ? _value.postId
+          : postId // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       body: null == body
           ? _value.body
@@ -128,7 +150,11 @@ class __$$CommentModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CommentModelImpl with DiagnosticableTreeMixin implements _CommentModel {
   const _$CommentModelImpl(
-      {required this.id, required this.title, required this.body});
+      {required this.id,
+      required this.postId,
+      required this.name,
+      required this.email,
+      required this.body});
 
   factory _$CommentModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CommentModelImplFromJson(json);
@@ -136,13 +162,17 @@ class _$CommentModelImpl with DiagnosticableTreeMixin implements _CommentModel {
   @override
   final int id;
   @override
-  final String title;
+  final int postId;
+  @override
+  final String name;
+  @override
+  final String email;
   @override
   final String body;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CommentModel(id: $id, title: $title, body: $body)';
+    return 'CommentModel(id: $id, postId: $postId, name: $name, email: $email, body: $body)';
   }
 
   @override
@@ -151,7 +181,9 @@ class _$CommentModelImpl with DiagnosticableTreeMixin implements _CommentModel {
     properties
       ..add(DiagnosticsProperty('type', 'CommentModel'))
       ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('title', title))
+      ..add(DiagnosticsProperty('postId', postId))
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('body', body));
   }
 
@@ -161,13 +193,15 @@ class _$CommentModelImpl with DiagnosticableTreeMixin implements _CommentModel {
         (other.runtimeType == runtimeType &&
             other is _$CommentModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
+            (identical(other.postId, postId) || other.postId == postId) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.body, body) || other.body == body));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, body);
+  int get hashCode => Object.hash(runtimeType, id, postId, name, email, body);
 
   /// Create a copy of CommentModel
   /// with the given fields replaced by the non-null parameter values.
@@ -188,7 +222,9 @@ class _$CommentModelImpl with DiagnosticableTreeMixin implements _CommentModel {
 abstract class _CommentModel implements CommentModel {
   const factory _CommentModel(
       {required final int id,
-      required final String title,
+      required final int postId,
+      required final String name,
+      required final String email,
       required final String body}) = _$CommentModelImpl;
 
   factory _CommentModel.fromJson(Map<String, dynamic> json) =
@@ -197,7 +233,11 @@ abstract class _CommentModel implements CommentModel {
   @override
   int get id;
   @override
-  String get title;
+  int get postId;
+  @override
+  String get name;
+  @override
+  String get email;
   @override
   String get body;
 
@@ -215,7 +255,7 @@ ListCommentModel _$ListCommentModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ListCommentModel {
-  List<CommentModel> get posts => throw _privateConstructorUsedError;
+  List<CommentModel> get comments => throw _privateConstructorUsedError;
 
   /// Serializes this ListCommentModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -233,7 +273,7 @@ abstract class $ListCommentModelCopyWith<$Res> {
           ListCommentModel value, $Res Function(ListCommentModel) then) =
       _$ListCommentModelCopyWithImpl<$Res, ListCommentModel>;
   @useResult
-  $Res call({List<CommentModel> posts});
+  $Res call({List<CommentModel> comments});
 }
 
 /// @nodoc
@@ -251,12 +291,12 @@ class _$ListCommentModelCopyWithImpl<$Res, $Val extends ListCommentModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? posts = null,
+    Object? comments = null,
   }) {
     return _then(_value.copyWith(
-      posts: null == posts
-          ? _value.posts
-          : posts // ignore: cast_nullable_to_non_nullable
+      comments: null == comments
+          ? _value.comments
+          : comments // ignore: cast_nullable_to_non_nullable
               as List<CommentModel>,
     ) as $Val);
   }
@@ -270,7 +310,7 @@ abstract class _$$ListCommentModelImplCopyWith<$Res>
       __$$ListCommentModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<CommentModel> posts});
+  $Res call({List<CommentModel> comments});
 }
 
 /// @nodoc
@@ -286,12 +326,12 @@ class __$$ListCommentModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? posts = null,
+    Object? comments = null,
   }) {
     return _then(_$ListCommentModelImpl(
-      posts: null == posts
-          ? _value._posts
-          : posts // ignore: cast_nullable_to_non_nullable
+      comments: null == comments
+          ? _value._comments
+          : comments // ignore: cast_nullable_to_non_nullable
               as List<CommentModel>,
     ));
   }
@@ -302,23 +342,23 @@ class __$$ListCommentModelImplCopyWithImpl<$Res>
 class _$ListCommentModelImpl
     with DiagnosticableTreeMixin
     implements _ListCommentModel {
-  const _$ListCommentModelImpl({required final List<CommentModel> posts})
-      : _posts = posts;
+  const _$ListCommentModelImpl({required final List<CommentModel> comments})
+      : _comments = comments;
 
   factory _$ListCommentModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ListCommentModelImplFromJson(json);
 
-  final List<CommentModel> _posts;
+  final List<CommentModel> _comments;
   @override
-  List<CommentModel> get posts {
-    if (_posts is EqualUnmodifiableListView) return _posts;
+  List<CommentModel> get comments {
+    if (_comments is EqualUnmodifiableListView) return _comments;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_posts);
+    return EqualUnmodifiableListView(_comments);
   }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ListCommentModel(posts: $posts)';
+    return 'ListCommentModel(comments: $comments)';
   }
 
   @override
@@ -326,7 +366,7 @@ class _$ListCommentModelImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ListCommentModel'))
-      ..add(DiagnosticsProperty('posts', posts));
+      ..add(DiagnosticsProperty('comments', comments));
   }
 
   @override
@@ -334,13 +374,13 @@ class _$ListCommentModelImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ListCommentModelImpl &&
-            const DeepCollectionEquality().equals(other._posts, _posts));
+            const DeepCollectionEquality().equals(other._comments, _comments));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_posts));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_comments));
 
   /// Create a copy of ListCommentModel
   /// with the given fields replaced by the non-null parameter values.
@@ -360,14 +400,14 @@ class _$ListCommentModelImpl
 }
 
 abstract class _ListCommentModel implements ListCommentModel {
-  const factory _ListCommentModel({required final List<CommentModel> posts}) =
-      _$ListCommentModelImpl;
+  const factory _ListCommentModel(
+      {required final List<CommentModel> comments}) = _$ListCommentModelImpl;
 
   factory _ListCommentModel.fromJson(Map<String, dynamic> json) =
       _$ListCommentModelImpl.fromJson;
 
   @override
-  List<CommentModel> get posts;
+  List<CommentModel> get comments;
 
   /// Create a copy of ListCommentModel
   /// with the given fields replaced by the non-null parameter values.

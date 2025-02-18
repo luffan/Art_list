@@ -6,7 +6,7 @@ abstract class CacheDataSource {
 
   Future<bool> savePosts(ListPostModel posts);
 
-  Future<ListCommentModel> getComments();
+  Future<ListCommentModel> getComments(int postId);
 
   Future<bool> saveComments(ListCommentModel comments);
 }

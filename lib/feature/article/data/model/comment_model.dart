@@ -9,7 +9,9 @@ part 'comment_model.g.dart';
 class CommentModel with _$CommentModel {
   const factory CommentModel({
     required int id,
-    required String title,
+    required int postId,
+    required String name,
+    required String email,
     required String body,
   }) = _CommentModel;
 
@@ -19,7 +21,7 @@ class CommentModel with _$CommentModel {
 
 @freezed
 class ListCommentModel with _$ListCommentModel {
-  const factory ListCommentModel({required List<CommentModel> posts}) =
+  const factory ListCommentModel({required List<CommentModel> comments}) =
       _ListCommentModel;
 
   factory ListCommentModel.fromJson(Map<String, Object?> json) =>

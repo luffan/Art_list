@@ -4,6 +4,4 @@ import 'package:dartz/dartz.dart';
 
 abstract class PostRepository {
   Future<Either<Failure, ListPost>> getPosts();
-
-  Future<Either<Failure, Post>> getDetails(int postId);
 }

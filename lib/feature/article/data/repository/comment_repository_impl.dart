@@ -1,0 +1,53 @@
+import 'package:art_list/core/error/exception.dart';
+import 'package:art_list/core/error/failure.dart';
+import 'package:art_list/core/network/interface/network_info.dart';
+import 'package:art_list/feature/article/data/data_source/interface/cache_data_source.dart';
+import 'package:art_list/feature/article/data/data_source/interface/pref_data_source.dart';
+import 'package:art_list/feature/article/data/data_source/interface/remote_data_source.dart';
+import 'package:art_list/feature/article/data/wrapper/comment_wrapper.dart';
+import 'package:art_list/feature/article/domain/entity/comment.dart';
+import 'package:art_list/feature/article/domain/repository/comment_repository.dart';
+import 'package:dartz/dartz.dart';
+
+class CommentRepositoryImpl implements CommentRepository {
+  final CacheDataSource _cacheDataSource;
+  final RemoteDataSource _remoteDataSource;
+  final PrefDataSource _prefDataSource;
+  final NetworkInfo _networkInfo;
+  final ListCommentWrapper _listCommentWrapper;
+
+  const CommentRepositoryImpl(
+    this._cacheDataSource,
+    this._remoteDataSource,
+    this._prefDataSource,
+    this._networkInfo,
+  ) : _listCommentWrapper = const ListCommentWrapper();
+
+  @override
+  Future<Either<Failure, ListComment>> getComments(int postId) async {
+    final hasInternetConnection = await _networkInfo.isConnected;
+    if (hasInternetConnection) {
+      try {
+        final comments = await _remoteDataSource.getComments(postId);
+        final hasCachedComment = await _prefDataSource.getFirstCommentCache(
+          postId,
+        );
+        if (!hasCachedComment) {
+          _cacheDataSource.saveComments(comments);
+        }
+        return Right(_listCommentWrapper.convertToEntity(comments));
+      } on ServerException {
+        return Left(ServerFailure());
+      } on PrefException {
+        return Left(PrefFailure());
+      }
+    } else {
+      try {
+        final comments = await _cacheDataSource.getComments(postId);
+        return Right(_listCommentWrapper.convertToEntity(comments));
+      } on CacheException {
+        return Left(CacheFailure());
+      }
+    }
+  }
+}

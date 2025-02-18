@@ -3,3 +3,9 @@ abstract class Failure {
 
   const Failure([this.properties = const <dynamic>[]]);
 }
+
+class ServerFailure extends Failure {}
+
+class CacheFailure extends Failure {}
+
+class PrefFailure extends Failure {}
