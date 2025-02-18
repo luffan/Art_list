@@ -1,4 +1,4 @@
-import 'package:art_list/core/error/failures.dart';
+import 'package:art_list/core/error/failure.dart';
 import 'package:art_list/feature/article/domain/entity/post.dart';
 import 'package:dartz/dartz.dart';
 

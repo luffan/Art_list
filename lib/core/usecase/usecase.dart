@@ -1,4 +1,4 @@
-import 'package:art_list/core/error/failures.dart';
+import 'package:art_list/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class UseCase<Type, Params> {
