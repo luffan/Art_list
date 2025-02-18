@@ -6,3 +6,9 @@ abstract class UseCase<Type, Params> {
 }
 
 class NoParams {}
+
+class IdParams {
+  final int id;
+
+  const IdParams({required this.id});
+}
