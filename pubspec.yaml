@@ -37,6 +37,7 @@ dependencies:
 
   # State managment
   flutter_bloc: ^9.0.0
+  equatable: ^2.0.7
 
   # DI
   cherrypick: ^2.0.0
