@@ -20,8 +20,11 @@ PostModel _$PostModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PostModel {
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get title => throw _privateConstructorUsedError;
+  @HiveField(2)
   String get body => throw _privateConstructorUsedError;
 
   /// Serializes this PostModel to a JSON map.
@@ -39,7 +42,10 @@ abstract class $PostModelCopyWith<$Res> {
   factory $PostModelCopyWith(PostModel value, $Res Function(PostModel) then) =
       _$PostModelCopyWithImpl<$Res, PostModel>;
   @useResult
-  $Res call({int id, String title, String body});
+  $Res call(
+      {@HiveField(0) int id,
+      @HiveField(1) String title,
+      @HiveField(2) String body});
 }
 
 /// @nodoc
@@ -86,7 +92,10 @@ abstract class _$$PostModelImplCopyWith<$Res>
       __$$PostModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String title, String body});
+  $Res call(
+      {@HiveField(0) int id,
+      @HiveField(1) String title,
+      @HiveField(2) String body});
 }
 
 /// @nodoc
@@ -125,18 +134,24 @@ class __$$PostModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 4)
 class _$PostModelImpl with DiagnosticableTreeMixin implements _PostModel {
   const _$PostModelImpl(
-      {required this.id, required this.title, required this.body});
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.title,
+      @HiveField(2) required this.body});
 
   factory _$PostModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PostModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   final int id;
   @override
+  @HiveField(1)
   final String title;
   @override
+  @HiveField(2)
   final String body;
 
   @override
@@ -186,18 +201,21 @@ class _$PostModelImpl with DiagnosticableTreeMixin implements _PostModel {
 
 abstract class _PostModel implements PostModel {
   const factory _PostModel(
-      {required final int id,
-      required final String title,
-      required final String body}) = _$PostModelImpl;
+      {@HiveField(0) required final int id,
+      @HiveField(1) required final String title,
+      @HiveField(2) required final String body}) = _$PostModelImpl;
 
   factory _PostModel.fromJson(Map<String, dynamic> json) =
       _$PostModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   int get id;
   @override
+  @HiveField(1)
   String get title;
   @override
+  @HiveField(2)
   String get body;
 
   /// Create a copy of PostModel
@@ -214,6 +232,7 @@ ListPostModel _$ListPostModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ListPostModel {
+  @HiveField(0)
   List<PostModel> get posts => throw _privateConstructorUsedError;
 
   /// Serializes this ListPostModel to a JSON map.
@@ -232,7 +251,7 @@ abstract class $ListPostModelCopyWith<$Res> {
           ListPostModel value, $Res Function(ListPostModel) then) =
       _$ListPostModelCopyWithImpl<$Res, ListPostModel>;
   @useResult
-  $Res call({List<PostModel> posts});
+  $Res call({@HiveField(0) List<PostModel> posts});
 }
 
 /// @nodoc
@@ -269,7 +288,7 @@ abstract class _$$ListPostModelImplCopyWith<$Res>
       __$$ListPostModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PostModel> posts});
+  $Res call({@HiveField(0) List<PostModel> posts});
 }
 
 /// @nodoc
@@ -298,10 +317,12 @@ class __$$ListPostModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 5)
 class _$ListPostModelImpl
     with DiagnosticableTreeMixin
     implements _ListPostModel {
-  const _$ListPostModelImpl({required final List<PostModel> posts})
+  const _$ListPostModelImpl(
+      {@HiveField(0) required final List<PostModel> posts})
       : _posts = posts;
 
   factory _$ListPostModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -309,6 +330,7 @@ class _$ListPostModelImpl
 
   final List<PostModel> _posts;
   @override
+  @HiveField(0)
   List<PostModel> get posts {
     if (_posts is EqualUnmodifiableListView) return _posts;
     // ignore: implicit_dynamic_type
@@ -358,13 +380,15 @@ class _$ListPostModelImpl
 }
 
 abstract class _ListPostModel implements ListPostModel {
-  const factory _ListPostModel({required final List<PostModel> posts}) =
+  const factory _ListPostModel(
+          {@HiveField(0) required final List<PostModel> posts}) =
       _$ListPostModelImpl;
 
   factory _ListPostModel.fromJson(Map<String, dynamic> json) =
       _$ListPostModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   List<PostModel> get posts;
 
   /// Create a copy of ListPostModel

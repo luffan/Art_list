@@ -1,6 +1,6 @@
 import 'package:art_list/core/entity/converter.dart';
-import 'package:art_list/core/error/exception.dart';
 import 'package:art_list/core/error/failure.dart';
+import 'package:art_list/core/function/repository_function.dart';
 import 'package:art_list/core/network/interface/network_info.dart';
 import 'package:art_list/feature/article/data/data_source/interface/cache_data_source.dart';
 import 'package:art_list/feature/article/data/data_source/interface/remote_data_source.dart';
@@ -11,21 +11,21 @@ import 'package:dartz/dartz.dart';
 class CommentRepositoryImpl implements CommentRepository {
   final CacheDataSource _cacheDataSource;
   final RemoteDataSource _remoteDataSource;
-  final NetworkInfo _networkInfo;
   final Converter _listCommentWrapper;
+  final NetworkInfo _networkInfo;
 
-  const CommentRepositoryImpl(
+  CommentRepositoryImpl(
     this._cacheDataSource,
     this._remoteDataSource,
-    this._networkInfo,
     this._listCommentWrapper,
+    this._networkInfo,
   );
 
   @override
   Future<Either<Failure, ListComment>> getComments(int postId) async {
-    final hasInternetConnection = await _networkInfo.isConnected;
-    if (hasInternetConnection) {
-      try {
+    return getData<ListComment>(
+      networkInfo: _networkInfo,
+      hasConnection: () async {
         final comments = await _remoteDataSource.getComments(postId);
         final hasCachedComment = await _cacheDataSource.hasCachedComments(
           postId,
@@ -34,18 +34,11 @@ class CommentRepositoryImpl implements CommentRepository {
           _cacheDataSource.saveComments(comments);
         }
         return Right(_listCommentWrapper.convertToEntity(comments));
-      } on ServerException {
-        return Left(ServerFailure());
-      } on CacheException {
-        return Left(CacheFailure());
-      }
-    } else {
-      try {
+      },
+      noConnection: () async {
         final comments = await _cacheDataSource.getComments(postId);
         return Right(_listCommentWrapper.convertToEntity(comments));
-      } on CacheException {
-        return Left(CacheFailure());
-      }
-    }
+      },
+    );
   }
 }

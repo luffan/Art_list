@@ -20,10 +20,15 @@ CommentModel _$CommentModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CommentModel {
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   int get postId => throw _privateConstructorUsedError;
+  @HiveField(2)
   String get name => throw _privateConstructorUsedError;
+  @HiveField(3)
   String get email => throw _privateConstructorUsedError;
+  @HiveField(4)
   String get body => throw _privateConstructorUsedError;
 
   /// Serializes this CommentModel to a JSON map.
@@ -42,7 +47,12 @@ abstract class $CommentModelCopyWith<$Res> {
           CommentModel value, $Res Function(CommentModel) then) =
       _$CommentModelCopyWithImpl<$Res, CommentModel>;
   @useResult
-  $Res call({int id, int postId, String name, String email, String body});
+  $Res call(
+      {@HiveField(0) int id,
+      @HiveField(1) int postId,
+      @HiveField(2) String name,
+      @HiveField(3) String email,
+      @HiveField(4) String body});
 }
 
 /// @nodoc
@@ -99,7 +109,12 @@ abstract class _$$CommentModelImplCopyWith<$Res>
       __$$CommentModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, int postId, String name, String email, String body});
+  $Res call(
+      {@HiveField(0) int id,
+      @HiveField(1) int postId,
+      @HiveField(2) String name,
+      @HiveField(3) String email,
+      @HiveField(4) String body});
 }
 
 /// @nodoc
@@ -148,26 +163,32 @@ class __$$CommentModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 0)
 class _$CommentModelImpl with DiagnosticableTreeMixin implements _CommentModel {
   const _$CommentModelImpl(
-      {required this.id,
-      required this.postId,
-      required this.name,
-      required this.email,
-      required this.body});
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.postId,
+      @HiveField(2) required this.name,
+      @HiveField(3) required this.email,
+      @HiveField(4) required this.body});
 
   factory _$CommentModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CommentModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   final int id;
   @override
+  @HiveField(1)
   final int postId;
   @override
+  @HiveField(2)
   final String name;
   @override
+  @HiveField(3)
   final String email;
   @override
+  @HiveField(4)
   final String body;
 
   @override
@@ -221,24 +242,29 @@ class _$CommentModelImpl with DiagnosticableTreeMixin implements _CommentModel {
 
 abstract class _CommentModel implements CommentModel {
   const factory _CommentModel(
-      {required final int id,
-      required final int postId,
-      required final String name,
-      required final String email,
-      required final String body}) = _$CommentModelImpl;
+      {@HiveField(0) required final int id,
+      @HiveField(1) required final int postId,
+      @HiveField(2) required final String name,
+      @HiveField(3) required final String email,
+      @HiveField(4) required final String body}) = _$CommentModelImpl;
 
   factory _CommentModel.fromJson(Map<String, dynamic> json) =
       _$CommentModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   int get id;
   @override
+  @HiveField(1)
   int get postId;
   @override
+  @HiveField(2)
   String get name;
   @override
+  @HiveField(3)
   String get email;
   @override
+  @HiveField(4)
   String get body;
 
   /// Create a copy of CommentModel
@@ -255,6 +281,7 @@ ListCommentModel _$ListCommentModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ListCommentModel {
+  @HiveField(0)
   List<CommentModel> get comments => throw _privateConstructorUsedError;
 
   /// Serializes this ListCommentModel to a JSON map.
@@ -273,7 +300,7 @@ abstract class $ListCommentModelCopyWith<$Res> {
           ListCommentModel value, $Res Function(ListCommentModel) then) =
       _$ListCommentModelCopyWithImpl<$Res, ListCommentModel>;
   @useResult
-  $Res call({List<CommentModel> comments});
+  $Res call({@HiveField(0) List<CommentModel> comments});
 }
 
 /// @nodoc
@@ -310,7 +337,7 @@ abstract class _$$ListCommentModelImplCopyWith<$Res>
       __$$ListCommentModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<CommentModel> comments});
+  $Res call({@HiveField(0) List<CommentModel> comments});
 }
 
 /// @nodoc
@@ -339,10 +366,12 @@ class __$$ListCommentModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 1)
 class _$ListCommentModelImpl
     with DiagnosticableTreeMixin
     implements _ListCommentModel {
-  const _$ListCommentModelImpl({required final List<CommentModel> comments})
+  const _$ListCommentModelImpl(
+      {@HiveField(0) required final List<CommentModel> comments})
       : _comments = comments;
 
   factory _$ListCommentModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -350,6 +379,7 @@ class _$ListCommentModelImpl
 
   final List<CommentModel> _comments;
   @override
+  @HiveField(0)
   List<CommentModel> get comments {
     if (_comments is EqualUnmodifiableListView) return _comments;
     // ignore: implicit_dynamic_type
@@ -401,12 +431,14 @@ class _$ListCommentModelImpl
 
 abstract class _ListCommentModel implements ListCommentModel {
   const factory _ListCommentModel(
-      {required final List<CommentModel> comments}) = _$ListCommentModelImpl;
+          {@HiveField(0) required final List<CommentModel> comments}) =
+      _$ListCommentModelImpl;
 
   factory _ListCommentModel.fromJson(Map<String, dynamic> json) =
       _$ListCommentModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   List<CommentModel> get comments;
 
   /// Create a copy of ListCommentModel

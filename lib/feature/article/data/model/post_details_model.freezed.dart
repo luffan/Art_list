@@ -20,8 +20,11 @@ PostDetailsModel _$PostDetailsModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PostDetailsModel {
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get title => throw _privateConstructorUsedError;
+  @HiveField(2)
   String get body => throw _privateConstructorUsedError;
 
   /// Serializes this PostDetailsModel to a JSON map.
@@ -40,7 +43,10 @@ abstract class $PostDetailsModelCopyWith<$Res> {
           PostDetailsModel value, $Res Function(PostDetailsModel) then) =
       _$PostDetailsModelCopyWithImpl<$Res, PostDetailsModel>;
   @useResult
-  $Res call({int id, String title, String body});
+  $Res call(
+      {@HiveField(0) int id,
+      @HiveField(1) String title,
+      @HiveField(2) String body});
 }
 
 /// @nodoc
@@ -87,7 +93,10 @@ abstract class _$$PostDetailsModelImplCopyWith<$Res>
       __$$PostDetailsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String title, String body});
+  $Res call(
+      {@HiveField(0) int id,
+      @HiveField(1) String title,
+      @HiveField(2) String body});
 }
 
 /// @nodoc
@@ -126,20 +135,26 @@ class __$$PostDetailsModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 2)
 class _$PostDetailsModelImpl
     with DiagnosticableTreeMixin
     implements _PostDetailsModel {
   const _$PostDetailsModelImpl(
-      {required this.id, required this.title, required this.body});
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.title,
+      @HiveField(2) required this.body});
 
   factory _$PostDetailsModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PostDetailsModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   final int id;
   @override
+  @HiveField(1)
   final String title;
   @override
+  @HiveField(2)
   final String body;
 
   @override
@@ -190,18 +205,21 @@ class _$PostDetailsModelImpl
 
 abstract class _PostDetailsModel implements PostDetailsModel {
   const factory _PostDetailsModel(
-      {required final int id,
-      required final String title,
-      required final String body}) = _$PostDetailsModelImpl;
+      {@HiveField(0) required final int id,
+      @HiveField(1) required final String title,
+      @HiveField(2) required final String body}) = _$PostDetailsModelImpl;
 
   factory _PostDetailsModel.fromJson(Map<String, dynamic> json) =
       _$PostDetailsModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   int get id;
   @override
+  @HiveField(1)
   String get title;
   @override
+  @HiveField(2)
   String get body;
 
   /// Create a copy of PostDetailsModel
@@ -218,6 +236,7 @@ ListPostDetailsModel _$ListPostDetailsModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ListPostDetailsModel {
+  @HiveField(0)
   List<PostDetailsModel> get details => throw _privateConstructorUsedError;
 
   /// Serializes this ListPostDetailsModel to a JSON map.
@@ -236,7 +255,7 @@ abstract class $ListPostDetailsModelCopyWith<$Res> {
           $Res Function(ListPostDetailsModel) then) =
       _$ListPostDetailsModelCopyWithImpl<$Res, ListPostDetailsModel>;
   @useResult
-  $Res call({List<PostDetailsModel> details});
+  $Res call({@HiveField(0) List<PostDetailsModel> details});
 }
 
 /// @nodoc
@@ -274,7 +293,7 @@ abstract class _$$ListPostDetailsModelImplCopyWith<$Res>
       __$$ListPostDetailsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PostDetailsModel> details});
+  $Res call({@HiveField(0) List<PostDetailsModel> details});
 }
 
 /// @nodoc
@@ -303,11 +322,12 @@ class __$$ListPostDetailsModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 3)
 class _$ListPostDetailsModelImpl
     with DiagnosticableTreeMixin
     implements _ListPostDetailsModel {
   const _$ListPostDetailsModelImpl(
-      {required final List<PostDetailsModel> details})
+      {@HiveField(0) required final List<PostDetailsModel> details})
       : _details = details;
 
   factory _$ListPostDetailsModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -315,6 +335,7 @@ class _$ListPostDetailsModelImpl
 
   final List<PostDetailsModel> _details;
   @override
+  @HiveField(0)
   List<PostDetailsModel> get details {
     if (_details is EqualUnmodifiableListView) return _details;
     // ignore: implicit_dynamic_type
@@ -367,13 +388,14 @@ class _$ListPostDetailsModelImpl
 
 abstract class _ListPostDetailsModel implements ListPostDetailsModel {
   const factory _ListPostDetailsModel(
-          {required final List<PostDetailsModel> details}) =
+          {@HiveField(0) required final List<PostDetailsModel> details}) =
       _$ListPostDetailsModelImpl;
 
   factory _ListPostDetailsModel.fromJson(Map<String, dynamic> json) =
       _$ListPostDetailsModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   List<PostDetailsModel> get details;
 
   /// Create a copy of ListPostDetailsModel
