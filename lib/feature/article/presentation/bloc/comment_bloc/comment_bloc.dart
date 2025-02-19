@@ -1,4 +1,4 @@
-import 'package:art_list/core/usecase/usecase.dart';
+import 'package:art_list/core/domain/usecase/usecase.dart';
 import 'package:art_list/feature/article/domain/entity/comment.dart';
 import 'package:art_list/feature/article/domain/usecase/get_comments.dart';
 import 'package:art_list/feature/article/presentation/util/failure_util.dart';

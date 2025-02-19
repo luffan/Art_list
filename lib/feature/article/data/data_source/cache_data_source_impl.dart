@@ -1,4 +1,4 @@
-import 'package:art_list/core/mixin/cache_mixin.dart';
+import 'package:art_list/core/utils/mixin/cache_mixin.dart';
 import 'package:art_list/feature/article/data/data_source/interface/cache_data_source.dart';
 import 'package:art_list/feature/article/data/model/comment_model.dart';
 import 'package:art_list/feature/article/data/model/post_details_model.dart';
@@ -29,9 +29,7 @@ class CacheDataSourceImpl with CacheMixin implements CacheDataSource {
     _commentsBox = await Hive.openBox<ListCommentModel>('comments');
   }
 
-  const CacheDataSourceImpl(
-
-  );
+  const CacheDataSourceImpl();
 
   @override
   Future<ListCommentModel> getComments(int postId) async {

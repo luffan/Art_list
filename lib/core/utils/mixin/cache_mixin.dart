@@ -1,4 +1,4 @@
-import 'package:art_list/core/error/exception.dart';
+import 'package:art_list/core/utils/error/exception.dart';
 
 mixin CacheMixin {
   Future<bool> hasData<T>(T Function() request) async {

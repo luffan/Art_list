@@ -1,8 +1,8 @@
-import 'package:art_list/core/error/failure.dart';
+import 'package:art_list/core/utils/error/failure.dart';
 
 extension FailureExtension on Failure {
   String toMessage() {
-    switch(runtimeType) {
+    switch (runtimeType) {
       case ServerFailure:
         return 'Server Failure';
       case CacheFailure:

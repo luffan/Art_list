@@ -1,5 +1,5 @@
-import 'package:art_list/core/network/interface/network_info.dart';
-import 'package:art_list/core/network/network_info_impl.dart';
+import 'package:art_list/core/data/network/interface/network_info.dart';
+import 'package:art_list/core/data/network/network_info_impl.dart';
 import 'package:art_list/feature/article/data/client/rest_client.dart';
 import 'package:art_list/feature/article/data/data_source/cache_data_source_impl.dart';
 import 'package:art_list/feature/article/data/data_source/interface/cache_data_source.dart';

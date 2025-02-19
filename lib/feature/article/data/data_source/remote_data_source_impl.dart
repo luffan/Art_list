@@ -1,4 +1,4 @@
-import 'package:art_list/core/error/exception.dart';
+import 'package:art_list/core/utils/error/exception.dart';
 import 'package:art_list/feature/article/data/client/rest_client.dart';
 import 'package:art_list/feature/article/data/data_source/interface/remote_data_source.dart';
 import 'package:art_list/feature/article/data/model/comment_model.dart';

@@ -1,4 +1,4 @@
-import 'package:art_list/core/entity/converter.dart';
+import 'package:art_list/core/data/entity/converter.dart';
 import 'package:art_list/feature/article/data/model/comment_model.dart';
 import 'package:art_list/feature/article/domain/entity/comment.dart';
 

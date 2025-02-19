@@ -1,4 +1,4 @@
-import 'package:art_list/core/entity/converter.dart';
+import 'package:art_list/core/data/entity/converter.dart';
 import 'package:art_list/feature/article/data/model/post_details_model.dart';
 import 'package:art_list/feature/article/domain/entity/post_details.dart';
 

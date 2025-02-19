@@ -1,6 +1,6 @@
-import 'package:art_list/core/error/exception.dart';
-import 'package:art_list/core/error/failure.dart';
-import 'package:art_list/core/network/interface/network_info.dart';
+import 'package:art_list/core/data/network/interface/network_info.dart';
+import 'package:art_list/core/utils/error/exception.dart';
+import 'package:art_list/core/utils/error/failure.dart';
 import 'package:dartz/dartz.dart';
 
 typedef NetworkConnection<T> = Future<Either<Failure, T>> Function();

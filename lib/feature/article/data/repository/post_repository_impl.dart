@@ -1,7 +1,7 @@
-import 'package:art_list/core/entity/converter.dart';
-import 'package:art_list/core/error/failure.dart';
-import 'package:art_list/core/function/repository_function.dart';
-import 'package:art_list/core/network/interface/network_info.dart';
+import 'package:art_list/core/data/entity/converter.dart';
+import 'package:art_list/core/data/network/interface/network_info.dart';
+import 'package:art_list/core/utils/error/failure.dart';
+import 'package:art_list/core/utils/function/repository_function.dart';
 import 'package:art_list/feature/article/data/data_source/interface/cache_data_source.dart';
 import 'package:art_list/feature/article/data/data_source/interface/remote_data_source.dart';
 import 'package:art_list/feature/article/domain/entity/post.dart';

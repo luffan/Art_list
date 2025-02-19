@@ -1,4 +1,4 @@
-import 'package:art_list/core/entity/list_entity.dart';
+import 'package:art_list/core/data/entity/list_entity.dart';
 
 class Post {
   final int id;
