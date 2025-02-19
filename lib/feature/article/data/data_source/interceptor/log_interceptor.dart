@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 
-class LogInterceptors extends Interceptor {
+class LoggerInterceptor extends Interceptor {
   final Logger logger;
 
-  LogInterceptors(this.logger);
+  LoggerInterceptor(this.logger);
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {

@@ -3,20 +3,34 @@ import 'package:art_list/feature/article/data/data_source/interface/cache_data_s
 import 'package:art_list/feature/article/data/model/comment_model.dart';
 import 'package:art_list/feature/article/data/model/post_details_model.dart';
 import 'package:art_list/feature/article/data/model/post_model.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 const String _postKey = 'post';
 const String _commentsKey = 'comments';
 
 class CacheDataSourceImpl with CacheMixin implements CacheDataSource {
-  final Box<ListPostModel> _postsBox;
-  final Box<PostDetailsModel> _postDetailsBox;
-  final Box<ListCommentModel> _commentsBox;
+  static late Box<ListPostModel> _postsBox;
+  static late Box<PostDetailsModel> _postDetailsBox;
+  static late Box<ListCommentModel> _commentsBox;
+
+  static Future<void> initHive() async {
+    await Hive.initFlutter();
+
+    Hive.registerAdapter(PostModelImplAdapter());
+    Hive.registerAdapter(ListPostModelImplAdapter());
+    Hive.registerAdapter(PostDetailsModelImplAdapter());
+    Hive.registerAdapter(ListPostDetailsModelImplAdapter());
+    Hive.registerAdapter(CommentModelImplAdapter());
+    Hive.registerAdapter(ListCommentModelImplAdapter());
+
+    /// Creating boxes
+    _postsBox = await Hive.openBox<ListPostModel>('posts');
+    _postDetailsBox = await Hive.openBox<PostDetailsModel>('postDetails');
+    _commentsBox = await Hive.openBox<ListCommentModel>('comments');
+  }
 
   const CacheDataSourceImpl(
-    this._postsBox,
-    this._postDetailsBox,
-    this._commentsBox,
+
   );
 
   @override

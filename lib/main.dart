@@ -1,6 +1,12 @@
+import 'package:art_list/di/modules/configure_dependencies.dart';
+import 'package:art_list/feature/article/data/data_source/cache_data_source_impl.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async  {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CacheDataSourceImpl.initHive();
+  Injector.configureDependencies();
+  Injector.dispose();
   runApp(const MyApp());
 }
 
