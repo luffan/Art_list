@@ -24,7 +24,6 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   path_provider: ^2.0.0
-  uuid: ^4.5.1
 
   # Network info
   internet_connection_checker: ^3.0.1
