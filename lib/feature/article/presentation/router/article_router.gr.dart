@@ -8,7 +8,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:art_list/feature/article/presentation/pages/post_details_page/post_detials_page.dart'
+import 'package:art_list/feature/article/presentation/pages/post_details_page/post_details_page.dart'
     as _i1;
 import 'package:art_list/feature/article/presentation/pages/post_page/post_page.dart'
     as _i2;

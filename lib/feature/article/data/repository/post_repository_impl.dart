@@ -37,8 +37,13 @@ class PostRepositoryImpl implements PostRepository {
         return Right(_listPostWrapper.convertToEntity(posts));
       },
       noConnection: () async {
-        final posts = await _cacheDataSource.getPosts();
-        return Right(_listPostWrapper.convertToEntity(posts));
+        final hasCachedPosts = await _cacheDataSource.hasCachedPosts();
+        if (hasCachedPosts) {
+          final posts = await _cacheDataSource.getPosts();
+          return Right(_listPostWrapper.convertToEntity(posts));
+        } else {
+          return Left(CacheFailure(message: 'No data in cash'));
+        }
       },
     );
   }
@@ -58,8 +63,15 @@ class PostRepositoryImpl implements PostRepository {
         return Right(_detailsPostWrapper.convertToEntity(details));
       },
       noConnection: () async {
-        final details = await _cacheDataSource.getPostDetails(postId);
-        return Right(_listPostWrapper.convertToEntity(details));
+        final hasCachedPostsDetails = await _cacheDataSource.hasCachedDetails(
+          postId,
+        );
+        if (hasCachedPostsDetails) {
+          final details = await _cacheDataSource.getPostDetails(postId);
+          return Right(_detailsPostWrapper.convertToEntity(details));
+        } else {
+          return Left(CacheFailure(message: 'No data in cash'));
+        }
       },
     );
   }

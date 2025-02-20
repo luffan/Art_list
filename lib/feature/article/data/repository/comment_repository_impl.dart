@@ -36,8 +36,15 @@ class CommentRepositoryImpl implements CommentRepository {
         return Right(_listCommentWrapper.convertToEntity(comments));
       },
       noConnection: () async {
-        final comments = await _cacheDataSource.getComments(postId);
-        return Right(_listCommentWrapper.convertToEntity(comments));
+        final hasCachedComment = await _cacheDataSource.hasCachedComments(
+          postId,
+        );
+        if (hasCachedComment) {
+          final comments = await _cacheDataSource.getComments(postId);
+          return Right(_listCommentWrapper.convertToEntity(comments));
+        } else {
+          return Left(CacheFailure(message: 'No data in cash'));
+        }
       },
     );
   }
