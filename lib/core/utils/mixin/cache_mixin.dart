@@ -14,8 +14,8 @@ mixin CacheMixin {
     try {
       await request.call();
       return true;
-    } catch (_) {
-      throw CacheException();
+    } catch (e) {
+      throw CacheException(e.toString());
     }
   }
 
@@ -27,8 +27,8 @@ mixin CacheMixin {
       } else {
         throw NullException();
       }
-    } catch (_) {
-      throw CacheException();
+    } catch (e) {
+      throw CacheException(e.toString());
     }
   }
 }

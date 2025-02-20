@@ -1,6 +1,11 @@
 import 'package:art_list/core/presentation/provider/theme_provider.dart';
+import 'package:art_list/core/presentation/widget/app_bar.dart';
+import 'package:art_list/core/presentation/widget/empty_info.dart';
+import 'package:art_list/core/presentation/widget/error_info.dart';
+import 'package:art_list/core/presentation/widget/loader.dart';
 import 'package:art_list/di/modules/configure_dependencies.dart';
 import 'package:art_list/feature/article/presentation/bloc/post_bloc/post_bloc.dart';
+import 'package:art_list/feature/article/presentation/pages/post_page/widget/post_list.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,20 +19,28 @@ class PostPage extends StatefulWidget {
 }
 
 class _PostPageState extends State<PostPage> {
+  late final PostBloc _bloc;
+
   @override
   void initState() {
     super.initState();
-    Injector.locator.resolve<PostBloc>().add(GetListPost());
+    _bloc = Injector.locator.resolve<PostBloc>()..add(GetListPost());
+  }
+
+  @override
+  void dispose() {
+    _bloc.close();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('List posts'),
+      appBar: ArtAppBar(
+        title: 'List Post',
         actions: [
           IconButton(
-            onPressed: () => context.read<ThemeProvider>().switchingTheme(),
+            onPressed: context.read<ThemeProvider>().switchingTheme,
             icon: Icon(
               Icons.dark_mode_outlined,
             ),
@@ -35,35 +48,19 @@ class _PostPageState extends State<PostPage> {
         ],
       ),
       body: BlocBuilder<PostBloc, PostState>(
-        bloc: Injector.locator.resolve<PostBloc>(),
-        builder: (context, state) {
+        bloc: _bloc,
+        builder: (_, state) {
           if (state is Error) {
-            return Center(
-              child: Text(state.message),
+            return ErrorInfo(
+              title: state.title,
+              message: state.message,
             );
           } else if (state is Loaded) {
-            return Center(
-              child: Expanded(
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  itemCount: state.posts.length,
-                  itemBuilder: (context, index) {
-                    final post = state.posts[index];
-                    return ListTile(
-                      title: Text(post.title),
-                      subtitle: Text(
-                        post.body,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    );
-                  },
-                  separatorBuilder: (_, __) => const SizedBox(height: 12),
-                ),
-              ),
-            );
+            return PostList(posts: state.posts);
+          } else if (state is Empty) {
+            return EmptyInfo();
           } else {
-            return Center(child: CircularProgressIndicator());
+            return Loader();
           }
         },
       ),

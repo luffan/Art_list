@@ -22,7 +22,7 @@ class PostDetailsBloc extends Bloc<PostDetailsEvent, PostDetailsState> {
 
       detailsEither.fold(
         (failure) {
-          emit(Error(message: failure.toMessage()));
+          emit(Error(title: failure.title, message: failure.message));
         },
         (details) async {
           emit(Loaded(details: details));

@@ -13,13 +13,21 @@ import 'package:art_list/feature/article/presentation/pages/post_details_page/po
 import 'package:art_list/feature/article/presentation/pages/post_page/post_page.dart'
     as _i2;
 import 'package:auto_route/auto_route.dart' as _i3;
+import 'package:flutter/material.dart' as _i4;
 
 /// generated route for
 /// [_i1.PostDetailsPage]
-class PostDetailsRoute extends _i3.PageRouteInfo<void> {
-  const PostDetailsRoute({List<_i3.PageRouteInfo>? children})
-      : super(
+class PostDetailsRoute extends _i3.PageRouteInfo<PostDetailsRouteArgs> {
+  PostDetailsRoute({
+    _i4.Key? key,
+    required int postId,
+    List<_i3.PageRouteInfo>? children,
+  }) : super(
           PostDetailsRoute.name,
+          args: PostDetailsRouteArgs(
+            key: key,
+            postId: postId,
+          ),
           initialChildren: children,
         );
 
@@ -28,9 +36,29 @@ class PostDetailsRoute extends _i3.PageRouteInfo<void> {
   static _i3.PageInfo page = _i3.PageInfo(
     name,
     builder: (data) {
-      return const _i1.PostDetailsPage();
+      final args = data.argsAs<PostDetailsRouteArgs>();
+      return _i1.PostDetailsPage(
+        key: args.key,
+        postId: args.postId,
+      );
     },
   );
+}
+
+class PostDetailsRouteArgs {
+  const PostDetailsRouteArgs({
+    this.key,
+    required this.postId,
+  });
+
+  final _i4.Key? key;
+
+  final int postId;
+
+  @override
+  String toString() {
+    return 'PostDetailsRouteArgs{key: $key, postId: $postId}';
+  }
 }
 
 /// generated route for
