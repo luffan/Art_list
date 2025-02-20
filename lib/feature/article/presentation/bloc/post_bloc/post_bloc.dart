@@ -23,9 +23,9 @@ class PostBloc extends Bloc<PostEvent, PostState> {
 
       postEither.fold(
         (failure) {
-          emit(Error(message: failure.toMessage()));
+          emit(Error(title: failure.title, message: failure.message));
         },
-        (posts) async {
+        (posts) {
           emit(Loaded(posts: posts.asList));
         },
       );

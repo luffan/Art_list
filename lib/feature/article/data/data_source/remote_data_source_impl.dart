@@ -15,8 +15,8 @@ class RemoteDataSourceImpl implements RemoteDataSource {
     try {
       final comments = await _restClient.getComments(postId);
       return comments;
-    } catch (_) {
-      throw ServerException();
+    } catch (e) {
+      throw ServerException(e.toString());
     }
   }
 
@@ -25,8 +25,8 @@ class RemoteDataSourceImpl implements RemoteDataSource {
     try {
       final details = await _restClient.getPostDetails(postId);
       return details;
-    } catch (_) {
-      throw ServerException();
+    } catch (e) {
+      throw ServerException(e.toString());
     }
   }
 
@@ -35,8 +35,8 @@ class RemoteDataSourceImpl implements RemoteDataSource {
     try {
       final posts = await _restClient.getPosts();
       return posts;
-    } catch (_) {
-      throw ServerException();
+    } catch (e) {
+      throw ServerException(e.toString());
     }
   }
 }

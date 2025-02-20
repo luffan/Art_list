@@ -6,14 +6,14 @@ import 'package:retrofit/retrofit.dart';
 
 part 'rest_client.g.dart';
 
-@RestApi(baseUrl: 'https://jsonplaceholder.typicode.com/')
+@RestApi(baseUrl: 'https://jsonplaceholder.typicode.com')
 abstract class RestClient {
   factory RestClient(Dio dio, {String? baseUrl}) = _RestClient;
 
-  @GET('/post')
+  @GET('/posts')
   Future<ListPostModel> getPosts();
 
-  @GET('/post/{id}')
+  @GET('/posts/{id}')
   Future<PostDetailsModel> getPostDetails(@Path('id') int id);
 
   @GET('/posts/{id}/comments')

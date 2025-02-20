@@ -24,10 +24,11 @@ final class Loaded extends PostState {
 }
 
 class Error extends PostState {
+  final String title;
   final String message;
 
-  const Error({required this.message});
+  const Error({required this.title, required this.message});
 
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [message, title];
 }

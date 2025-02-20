@@ -14,17 +14,17 @@ Future<Either<Failure, T>> getData<T>({
   if (hasInternetConnection) {
     try {
       return hasConnection.call();
-    } on ServerException {
-      return Left(ServerFailure());
-    } on CacheException {
-      return Left(CacheFailure());
+    } on ServerException catch (e) {
+      return Left(ServerFailure(message: e.message));
+    } on CacheException catch (e) {
+      return Left(CacheFailure(message: e.message));
     }
   } else {
     try {
       return noConnection.call();
-    } on CacheException {
-      return Left(CacheFailure());
-    } on NullException {
+    } on CacheException catch (e) {
+      return Left(CacheFailure(message: e.message));
+    } on NullException catch (_) {
       return Left(NullFailure());
     }
   }

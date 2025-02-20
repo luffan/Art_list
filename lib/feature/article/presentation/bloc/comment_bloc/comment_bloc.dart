@@ -22,7 +22,7 @@ class CommentBloc extends Bloc<CommentEvent, CommentState> {
 
       commentEither.fold(
         (failure) {
-          emit(Error(message: failure.toMessage()));
+          emit(Error(title: failure.title, message: failure.message));
         },
         (comments) async {
           emit(Loaded(comments: comments.asList));

@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 @RoutePage()
 class PostDetailsPage extends StatelessWidget {
-  const PostDetailsPage({super.key});
+  final int postId;
+  const PostDetailsPage({super.key, required this.postId});
 
   @override
   Widget build(BuildContext context) {

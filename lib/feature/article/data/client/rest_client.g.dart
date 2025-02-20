@@ -14,7 +14,7 @@ class _RestClient implements RestClient {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://jsonplaceholder.typicode.com/';
+    baseUrl ??= 'https://jsonplaceholder.typicode.com';
   }
 
   final Dio _dio;
@@ -36,7 +36,7 @@ class _RestClient implements RestClient {
     )
         .compose(
           _dio.options,
-          '/post',
+          '/posts',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -69,7 +69,7 @@ class _RestClient implements RestClient {
     )
         .compose(
           _dio.options,
-          '/post/${id}',
+          '/posts/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
