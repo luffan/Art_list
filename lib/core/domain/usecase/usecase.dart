@@ -1,6 +1,7 @@
 import 'package:art_list/core/utils/error/failure.dart';
 import 'package:dartz/dartz.dart';
 
+/// Base class for Use Cases in app
 abstract class UseCase<Type, Params> {
   Future<Either<Failure, Type>> call(Params params);
 }

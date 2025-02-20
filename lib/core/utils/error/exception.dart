@@ -1,3 +1,4 @@
+/// Errors generated in the application
 class ServerException implements Exception {
   final String message;
 

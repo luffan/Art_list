@@ -1,3 +1,4 @@
+/// Failures generated in the application
 abstract class Failure {
   final List<dynamic> properties;
 
