@@ -2,9 +2,8 @@ import 'package:art_list/core/domain/usecase/usecase.dart';
 import 'package:art_list/feature/article/domain/entity/post.dart';
 import 'package:art_list/feature/article/domain/usecase/get_posts.dart';
 import 'package:art_list/feature/article/presentation/util/failure_util.dart';
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import "package:meta/meta.dart";
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'post_event.dart';
 

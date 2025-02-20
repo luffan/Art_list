@@ -3,11 +3,11 @@ import 'package:art_list/core/utils/error/failure.dart';
 extension FailureExtension on Failure {
   String get title {
     switch (runtimeType) {
-      case ServerFailure:
+      case ServerFailure _:
         return 'Server Failure';
-      case CacheFailure:
+      case CacheFailure _:
         return 'Cache Failure';
-      case NullFailure:
+      case NullFailure _:
         return 'Null Failure';
       default:
         return 'Unexpected failure';
@@ -18,12 +18,12 @@ extension FailureExtension on Failure {
     switch (runtimeType) {
       case ServerFailure f:
         return f.message;
-      case CacheFailure:
-        return 'Cache Failure';
-      case NullFailure:
-        return 'Null Failure';
+      case CacheFailure f:
+        return f.message;
+      case NullFailure _:
+        return 'Null Failure message';
       default:
-        return 'Unexpected failure';
+        return 'Unexpected failure message';
     }
   }
 }

@@ -1,7 +1,7 @@
 import 'package:art_list/core/data/entity/converter.dart';
 import 'package:art_list/core/data/network/interface/network_info.dart';
+import 'package:art_list/core/utils/error/exception.dart';
 import 'package:art_list/core/utils/error/failure.dart';
-import 'package:art_list/core/utils/function/repository_function.dart';
 import 'package:art_list/feature/article/data/data_source/interface/cache_data_source.dart';
 import 'package:art_list/feature/article/data/data_source/interface/remote_data_source.dart';
 import 'package:art_list/feature/article/domain/entity/comment.dart';
@@ -23,9 +23,9 @@ class CommentRepositoryImpl implements CommentRepository {
 
   @override
   Future<Either<Failure, ListComment>> getComments(int postId) async {
-    return getData<ListComment>(
-      networkInfo: _networkInfo,
-      hasConnection: () async {
+    final hasInternetConnection = await _networkInfo.isConnected;
+    if (hasInternetConnection) {
+      try {
         final comments = await _remoteDataSource.getComments(postId);
         final hasCachedComment = await _cacheDataSource.hasCachedComments(
           postId,
@@ -34,8 +34,13 @@ class CommentRepositoryImpl implements CommentRepository {
           _cacheDataSource.saveComments(comments);
         }
         return Right(_listCommentWrapper.convertToEntity(comments));
-      },
-      noConnection: () async {
+      } on ServerException catch (e) {
+        return Left(ServerFailure(message: e.message));
+      } on CacheException catch (e) {
+        return Left(CacheFailure(message: e.message));
+      }
+    } else {
+      try {
         final hasCachedComment = await _cacheDataSource.hasCachedComments(
           postId,
         );
@@ -45,7 +50,11 @@ class CommentRepositoryImpl implements CommentRepository {
         } else {
           return Left(CacheFailure(message: 'No data in cash'));
         }
-      },
-    );
+      } on CacheException catch (e) {
+        return Left(CacheFailure(message: e.message));
+      } on NullException catch (_) {
+        return Left(NullFailure());
+      }
+    }
   }
 }

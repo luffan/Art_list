@@ -2,8 +2,8 @@ import 'package:art_list/core/domain/usecase/usecase.dart';
 import 'package:art_list/feature/article/domain/entity/comment.dart';
 import 'package:art_list/feature/article/domain/usecase/get_comments.dart';
 import 'package:art_list/feature/article/presentation/util/failure_util.dart';
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'comment_event.dart';
 
