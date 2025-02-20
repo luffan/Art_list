@@ -20,7 +20,10 @@ class PostList extends StatelessWidget {
         itemCount: posts.length,
         itemBuilder: (_, index) {
           final post = posts[index];
-          return PostTile(post: post);
+          return PostTile(
+            post: post,
+            index: index,
+          );
         },
         separatorBuilder: (_, __) => const SizedBox(height: 12),
       ),

@@ -19,7 +19,10 @@ class CommentList extends StatelessWidget {
         itemCount: comments.length,
         itemBuilder: (_, index) {
           final comment = comments[index];
-          return CommentTile(comment: comment);
+          return CommentTile(
+            comment: comment,
+            index: index,
+          );
         },
         separatorBuilder: (_, __) => const SizedBox(height: 12),
       ),

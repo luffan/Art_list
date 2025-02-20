@@ -20,6 +20,8 @@ class App extends StatelessWidget {
         builder: (context) {
           return AppLifecycle(
             child: MaterialApp.router(
+              themeAnimationCurve: Curves.fastOutSlowIn,
+              themeAnimationDuration: const Duration(milliseconds: 1500),
               theme: ThemeData(
                 useMaterial3: true,
                 colorSchemeSeed: const Color.fromRGBO(86, 80, 14, 171),
