@@ -56,7 +56,12 @@ class _PostPageState extends State<PostPage> {
               message: state.message,
             );
           } else if (state is Loaded) {
-            return PostList(posts: state.posts);
+            return RefreshIndicator(
+              onRefresh: () async {
+                _bloc.add(GetListPost());
+              },
+              child: PostList(posts: state.posts),
+            );
           } else if (state is Empty) {
             return EmptyInfo();
           } else {
