@@ -1,3 +1,13 @@
+/// Failures generated in the application
+///
+/// [ServerFailure] an failure that occurs when executing
+/// requests to the Api
+///
+/// [CacheFailure] an failure that occurs when executing queries
+/// to a local database
+///
+/// [NullFailure] an failure that occurs when accessing a value
+/// that is null
 abstract class Failure {
   final List<dynamic> properties;
 

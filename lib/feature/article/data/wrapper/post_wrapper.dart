@@ -2,6 +2,8 @@ import 'package:art_list/core/data/entity/converter.dart';
 import 'package:art_list/feature/article/data/model/post_model.dart';
 import 'package:art_list/feature/article/domain/entity/post.dart';
 
+/// A class that transforms data-level [PostModel] model into [Post] domain-level entity
+///
 class PostWrapper implements Converter<Post, PostModel> {
   const PostWrapper();
 

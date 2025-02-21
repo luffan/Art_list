@@ -9,6 +9,14 @@ import 'package:art_list/di/modules/package/rest_client_module.dart';
 import 'package:art_list/di/modules/presentation/bloc/bloc_module.dart';
 import 'package:cherrypick/cherrypick.dart';
 
+/// A class that creates all the objects needed for a given feature
+///
+/// [configureDependencies] install all modules for app
+///
+/// [dispose] clears data
+///
+/// [locator] public [Scope] for getting embedded objects
+///
 abstract class Injector {
   static late final Scope locator;
 

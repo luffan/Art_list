@@ -9,6 +9,9 @@ part 'post_details_event.dart';
 
 part 'post_details_state.dart';
 
+/// Class of the [Bloc] type that implements the logic
+/// for obtaining [PostDetails] from [GetPostDetails] use case
+///
 class PostDetailsBloc extends Bloc<PostDetailsEvent, PostDetailsState> {
   final GetPostDetails _getPostDetails;
 

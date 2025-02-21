@@ -9,6 +9,9 @@ part 'post_event.dart';
 
 part 'post_state.dart';
 
+/// Class of the [Bloc] type that implements the logic
+/// for obtaining [ListPost] from [GetPosts] use case
+///
 class PostBloc extends Bloc<PostEvent, PostState> {
   final GetPosts getPosts;
 

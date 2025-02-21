@@ -4,6 +4,10 @@ import 'package:art_list/feature/article/domain/entity/post_details.dart';
 import 'package:art_list/feature/article/domain/repository/post_repository.dart';
 import 'package:dartz/dartz.dart';
 
+/// A class that accesses the [PostRepository] and returns [PostDetails] or a [Failure]
+///
+/// There can be three types of failure [ServerFailure], [CacheFailure], [NullFailure]
+///
 class GetPostDetails implements UseCase<PostDetails, IdParams> {
   final PostRepository _postRepository;
 

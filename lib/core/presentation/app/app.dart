@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:provider/provider.dart';
 
+/// The main application widget that is needed
+/// to determine the theme, routing
+///
+/// [appRouter] parameter in which application routes are located
+///
 class App extends StatelessWidget {
   final RootStackRouter appRouter;
 
