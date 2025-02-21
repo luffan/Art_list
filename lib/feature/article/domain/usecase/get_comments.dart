@@ -4,6 +4,10 @@ import 'package:art_list/feature/article/domain/entity/comment.dart';
 import 'package:art_list/feature/article/domain/repository/comment_repository.dart';
 import 'package:dartz/dartz.dart';
 
+/// A class that accesses the [CommentRepository] and returns [ListComment] or a [Failure]
+///
+/// There can be three types of failure [ServerFailure], [CacheFailure], [NullFailure]
+///
 class GetComments implements UseCase<ListComment, IdParams> {
   final CommentRepository _commentRepository;
 

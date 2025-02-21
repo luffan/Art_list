@@ -2,6 +2,8 @@ import 'package:art_list/core/data/entity/converter.dart';
 import 'package:art_list/feature/article/data/model/comment_model.dart';
 import 'package:art_list/feature/article/domain/entity/comment.dart';
 
+/// A class that transforms data-level [CommentModel] model into [Comment] domain-level entity
+///
 class CommentWrapper implements Converter<Comment, CommentModel> {
   const CommentWrapper();
 

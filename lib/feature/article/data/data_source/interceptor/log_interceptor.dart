@@ -15,14 +15,16 @@ class LoggerInterceptor extends Interceptor {
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     logger.i(
-        'RESPONSE[${response.statusCode}] => PATH: ${response.requestOptions.path}');
+      'RESPONSE[${response.statusCode}] => PATH: ${response.requestOptions.path}',
+    );
     super.onResponse(response, handler);
   }
 
   @override
   Future onError(DioException err, ErrorInterceptorHandler handler) async {
     logger.e(
-        'ERROR[${err.response?.statusCode}] => PATH: ${err.requestOptions.path}');
+      'ERROR[${err.response?.statusCode}] => PATH: ${err.requestOptions.path}',
+    );
     super.onError(err, handler);
   }
 }

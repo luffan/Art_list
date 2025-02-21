@@ -6,6 +6,16 @@ import 'package:retrofit/retrofit.dart';
 
 part 'rest_client.g.dart';
 
+/// Client that describes requests in Api
+///
+/// [getPosts] a request that returns a list of posts
+///
+/// [getPostDetails] a request that returns post details
+/// based on the passed post id
+///
+/// [getComments] a request that returns post comments
+/// based on the passed post id
+///
 @RestApi(baseUrl: 'https://jsonplaceholder.typicode.com')
 abstract class RestClient {
   factory RestClient(Dio dio, {String? baseUrl}) = _RestClient;

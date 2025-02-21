@@ -1,7 +1,6 @@
 import 'package:art_list/core/data/network/interface/network_info.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
-/// Interface implementation [NetworkInfo]
 class NetworkInfoImpl implements NetworkInfo {
   final InternetConnectionChecker connectionChecker;
 

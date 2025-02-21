@@ -1,6 +1,10 @@
 import 'package:art_list/di/modules/configure_dependencies.dart';
 import 'package:flutter/material.dart';
 
+/// Widget necessary for tracking the life cycle of an application
+///
+/// Recycles classes injected via [Injector] when the application shuts down
+///
 class AppLifecycle extends StatefulWidget {
   final Widget child;
 

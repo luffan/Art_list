@@ -9,6 +9,9 @@ part 'comment_event.dart';
 
 part 'comment_state.dart';
 
+/// Class of the [Bloc] type that implements the logic
+/// for obtaining [ListComment] from [GetComments] use case
+///
 class CommentBloc extends Bloc<CommentEvent, CommentState> {
   final GetComments _getComments;
 

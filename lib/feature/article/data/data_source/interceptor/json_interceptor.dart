@@ -1,14 +1,17 @@
 import 'package:dio/dio.dart';
 
+/// Interceptor for processing responses from the Api.
+/// It is needed to convert the received data into the format we need
+///
 class JsonInterceptor extends Interceptor {
   JsonInterceptor();
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    // if (response.data is List) {
-    //   final parseData = response.requestOptions.path.split('/');
-    //   response.data = {parseData.last: response.data};
-    // }
+    if (response.data is List) {
+      final parseData = response.requestOptions.path.split('/');
+      response.data = {parseData.last: response.data};
+    }
     super.onResponse(response, handler);
   }
 }
