@@ -13,7 +13,7 @@ Future<Either<Failure, T>> getData<T>({
   final hasInternetConnection = await networkInfo.isConnected;
   if (hasInternetConnection) {
     try {
-      return hasConnection.call();
+      return await hasConnection.call();
     } on ServerException catch (e) {
       return Left(ServerFailure(message: e.message));
     } on CacheException catch (e) {
@@ -21,7 +21,7 @@ Future<Either<Failure, T>> getData<T>({
     }
   } else {
     try {
-      return noConnection.call();
+      return await noConnection.call();
     } on CacheException catch (e) {
       return Left(CacheFailure(message: e.message));
     } on NullException catch (_) {

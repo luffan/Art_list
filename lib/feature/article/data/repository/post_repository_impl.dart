@@ -1,7 +1,7 @@
 import 'package:art_list/core/data/entity/converter.dart';
 import 'package:art_list/core/data/network/interface/network_info.dart';
-import 'package:art_list/core/utils/error/exception.dart';
 import 'package:art_list/core/utils/error/failure.dart';
+import 'package:art_list/core/utils/function/repository_function.dart';
 import 'package:art_list/feature/article/data/data_source/interface/cache_data_source.dart';
 import 'package:art_list/feature/article/data/data_source/interface/remote_data_source.dart';
 import 'package:art_list/feature/article/domain/entity/post.dart';
@@ -26,22 +26,17 @@ class PostRepositoryImpl implements PostRepository {
 
   @override
   Future<Either<Failure, ListPost>> getPosts() async {
-    final hasInternetConnection = await _networkInfo.isConnected;
-    if (hasInternetConnection) {
-      try {
+    return getData(
+      networkInfo: _networkInfo,
+      hasConnection: () async {
         final posts = await _remoteDataSource.getPosts();
         final hasCachedPosts = await _cacheDataSource.hasCachedPosts();
         if (!hasCachedPosts) {
           _cacheDataSource.savePosts(posts);
         }
         return Right(_listPostWrapper.convertToEntity(posts));
-      } on ServerException catch (e) {
-        return Left(ServerFailure(message: e.message));
-      } on CacheException catch (e) {
-        return Left(CacheFailure(message: e.message));
-      }
-    } else {
-      try {
+      },
+      noConnection: () async {
         final hasCachedPosts = await _cacheDataSource.hasCachedPosts();
         if (hasCachedPosts) {
           final posts = await _cacheDataSource.getPosts();
@@ -49,19 +44,14 @@ class PostRepositoryImpl implements PostRepository {
         } else {
           return Left(CacheFailure(message: 'No data in cash'));
         }
-      } on CacheException catch (e) {
-        return Left(CacheFailure(message: e.message));
-      } on NullException catch (_) {
-        return Left(NullFailure());
-      }
-    }
+      },
+    );
   }
 
   @override
   Future<Either<Failure, PostDetails>> getDetails(int postId) async {
-    final hasInternetConnection = await _networkInfo.isConnected;
-    if (hasInternetConnection) {
-      try {
+    return getData(
+      hasConnection: () async {
         final details = await _remoteDataSource.getPostDetails(postId);
         final hasCachedPostsDetails = await _cacheDataSource.hasCachedDetails(
           postId,
@@ -70,13 +60,8 @@ class PostRepositoryImpl implements PostRepository {
           _cacheDataSource.savePostDetails(details);
         }
         return Right(_detailsPostWrapper.convertToEntity(details));
-      } on ServerException catch (e) {
-        return Left(ServerFailure(message: e.message));
-      } on CacheException catch (e) {
-        return Left(CacheFailure(message: e.message));
-      }
-    } else {
-      try {
+      },
+      noConnection: () async {
         final hasCachedPostsDetails = await _cacheDataSource.hasCachedDetails(
           postId,
         );
@@ -86,11 +71,8 @@ class PostRepositoryImpl implements PostRepository {
         } else {
           return Left(CacheFailure(message: 'No data in cash'));
         }
-      } on CacheException catch (e) {
-        return Left(CacheFailure(message: e.message));
-      } on NullException catch (_) {
-        return Left(NullFailure());
-      }
-    }
+      },
+      networkInfo: _networkInfo,
+    );
   }
 }

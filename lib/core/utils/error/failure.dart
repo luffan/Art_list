@@ -8,7 +8,7 @@
 ///
 /// [NullFailure] an failure that occurs when accessing a value
 /// that is null
-abstract class Failure {
+sealed class Failure {
   final List<dynamic> properties;
 
   const Failure([this.properties = const <dynamic>[]]);
