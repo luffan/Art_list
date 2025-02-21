@@ -59,11 +59,9 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
               bloc: _blocDetails,
               builder: (context, state) {
                 if (state is Error) {
-                  return Expanded(
-                    child: ErrorInfo(
-                      title: state.title,
-                      message: state.message,
-                    ),
+                  return ErrorInfo(
+                    title: state.title,
+                    message: state.message,
                   );
                 } else if (state is Loaded) {
                   return PostDetailsInfo(
@@ -86,11 +84,9 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
               bloc: _commentBloc,
               builder: (context, state) {
                 if (state is com.Error) {
-                  return Expanded(
-                    child: ErrorInfo(
-                      title: state.title,
-                      message: state.message,
-                    ),
+                  return ErrorInfo(
+                    title: state.title,
+                    message: state.message,
                   );
                 } else if (state is com.Loaded) {
                   return Expanded(

@@ -3,6 +3,7 @@ import 'package:art_list/core/presentation/widget/app_bar.dart';
 import 'package:art_list/core/presentation/widget/empty_info.dart';
 import 'package:art_list/core/presentation/widget/error_info.dart';
 import 'package:art_list/core/presentation/widget/loader.dart';
+import 'package:art_list/core/presentation/widget/smart_refresh_indicator.dart';
 import 'package:art_list/di/modules/configure_dependencies.dart';
 import 'package:art_list/feature/article/presentation/bloc/post_bloc/post_bloc.dart';
 import 'package:art_list/feature/article/presentation/pages/post_page/widget/post_list.dart';
@@ -47,27 +48,27 @@ class _PostPageState extends State<PostPage> {
           )
         ],
       ),
-      body: BlocBuilder<PostBloc, PostState>(
-        bloc: _bloc,
-        builder: (_, state) {
-          if (state is Error) {
-            return ErrorInfo(
-              title: state.title,
-              message: state.message,
-            );
-          } else if (state is Loaded) {
-            return RefreshIndicator(
-              onRefresh: () async {
-                _bloc.add(GetListPost());
-              },
-              child: PostList(posts: state.posts),
-            );
-          } else if (state is Empty) {
-            return EmptyInfo();
-          } else {
-            return Loader();
-          }
+      body: SmartRefreshIndicator(
+        onRefresh: () async {
+          _bloc.add(GetListPost());
         },
+        child: BlocBuilder<PostBloc, PostState>(
+          bloc: _bloc,
+          builder: (_, state) {
+            if (state is Error) {
+              return ErrorInfo(
+                title: state.title,
+                message: state.message,
+              );
+            } else if (state is Loaded) {
+              return PostList(posts: state.posts);
+            } else if (state is Empty) {
+              return EmptyInfo();
+            } else {
+              return Loader();
+            }
+          },
+        ),
       ),
     );
   }

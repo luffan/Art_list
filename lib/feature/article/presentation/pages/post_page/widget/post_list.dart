@@ -16,6 +16,7 @@ class PostList extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: ListView.separated(
+        physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         itemCount: posts.length,
         itemBuilder: (_, index) {

@@ -28,11 +28,9 @@ class ErrorInfo extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineLarge,
           ),
           const SizedBox(height: 8),
-          Expanded(
-            child: Text(
-              message,
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
+          Text(
+            message,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
         ],
       ),
